@@ -1,0 +1,83 @@
+﻿@model IEnumerable<AMS_Models.Models.Property>
+
+@{
+    ViewData["Title"] = "showPropertyDetails";
+}
+
+<h1>showPropertyDetails</h1>
+
+<p>
+    <a asp-action="insertproperty">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PropertyOwnerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PropertyOwnerPhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PropertyType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PropertyLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlatAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyOwnerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyOwnerPhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlatAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-action="EditProperty" asp-route-Pid="@item.Pid">Edit</a> |
+                <a asp-action="PropertyDetails" asp-route-Pid="@item.Pid">Details</a> |
+               @* <a asp-action="Delete" asp-route-id="@item.Pid">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

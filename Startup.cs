@@ -36,6 +36,11 @@ namespace ApartmentManagementSystem
             services.AddDbContext<ApartmentManagementContext>();
             services.AddScoped(typeof(Igeneric<>), typeof(GenericRepository<>));
             services.AddScoped<BAL_UserRegistration>();
+            services.AddScoped<BAL_ServiceMaintainance>();
+            services.AddScoped<BAL_Property>();
+            services.AddScoped<BAL_Complaint>();
+            services.AddScoped<BAL_Bill>();
+            services.AddScoped<BAL_Announcement>();
             services.AddMvc().AddSessionStateTempDataProvider();
             services.AddSession();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -93,8 +98,13 @@ namespace ApartmentManagementSystem
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=UserRegistrationUI}/{action=showuserdetails}/{id?}"
-                    /*"{controller=UserRegistrationUI}/{action=showuserbyid}/{id?}"*/);
+                    pattern:
+                    "{controller=Home}/{action=Index}/{id?}"
+                    //"{controller=Home}/{action=LoginPageAdmin}/{id?}"
+                    /*"{controller=UserRegistrationUI}/{action=showuserbyid}/{id?}"*/
+                    // "{controller=ServiceMaintainanceUI}/{action=showservicedetails}/{id?}"
+
+                    );
             });
         }
     }

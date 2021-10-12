@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,14 +18,23 @@ namespace ApartmentManagementSystem.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private ApartmentManagementContext AMCcontext;
-        public HomeController(ILogger<HomeController> logger, ApartmentManagementContext ams)
+        private AMS_Models.Models.ApartmentManagementContext AMCcontext;
+        public HomeController(ILogger<HomeController> logger, AMS_Models.Models.ApartmentManagementContext ams)
         {
             _logger = logger;
             AMCcontext = ams;
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult AdminMenuLandingPage()
+        {
+            return View();
+        }
+        public IActionResult CustomerMenuLandingPage()
         {
             return View();
         }
@@ -39,14 +49,14 @@ namespace ApartmentManagementSystem.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public IActionResult LoginPage(string msg)
+        public IActionResult LoginPageAdmin(string msg)
         {
             ViewBag.mess = msg;
             Response.Cookies.Delete("mycookie");
             return View();
         }
         [HttpPost]
-        public IActionResult LoginPage(string Aname, string Password)
+        public IActionResult LoginPageAdmin(string Aname, string Password)
         {
             AdminLogin usr = AMCcontext.AdminLogins.Where(user => user.Aname == Aname && user.Password == Password).FirstOrDefault();
             //
@@ -60,7 +70,7 @@ namespace ApartmentManagementSystem.Controllers
 
                 return RedirectToAction("AdminMenuLandingPage");
             }
-            return View("LoginPage", "Username or Password is incorrect");
+            return View("LoginPageAdmin", "Username or Password is incorrect");
         }
 
         private void savetoken(object token)
@@ -105,11 +115,14 @@ namespace ApartmentManagementSystem.Controllers
                 var token = Createtoken();
                 savetoken(token);
                 HttpContext.Session.SetInt32("CustomerId", usr.Uid);
-                return RedirectToAction("ShowAll");
+                return RedirectToAction("CustomerMenuLandingPage");
             }
 
 
             return View("LoginPageForCustomer", "Username or Password is incorrect");
         }
+
     }
+
+
 }

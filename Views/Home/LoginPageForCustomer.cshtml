@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/EstateAgency/Sliding-Sign-In-Sign-Up-Form-master/style.css" />
+    <title>Sign in & Sign up Form</title>
+</head>
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form asp-action="LoginPageForCustomer" method="post" class="sign-in-form">
+
+                    <h2 class="title">Sign in as Customer</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input name="UserName" id="Aname" placeholder="User Name" required />
+                        @*<span asp-validation-for="Aname" class="text-danger"></span>*@
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="Password" name="Password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
+                        @* <span asp-validation-for="Password" class="text-danger"></span>*@
+                    </div>
+                    <input type="submit" class="btn " value="Sign In" />
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+
+                <img src="~/EstateAgency/Sliding-Sign-In-Sign-Up-Form-master/img/log.svg" class="image" alt="" />
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="~/EstateAgency/Sliding-Sign-In-Sign-Up-Form-master/assets/js/login.js"></script>
+</body>
+</html>
+
+
+

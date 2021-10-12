@@ -32,23 +32,24 @@ namespace ApartmentManagementSystem.Controllers.AMS_UI_Controllers
             return View(usr);
         }
 
-        [HttpGet]
-        public IActionResult UserDetails(string Uid)
+     
+        public IActionResult UserDetails()
         {
-            UserRegistration flight = null;
+            UserRegistration usr = null;
             var cln = new HttpClient();
+            var Uid = HttpContext.Session.GetInt32("CustomerId");
             cln.BaseAddress = new Uri("https://localhost:44389/api/");
-            var getflight = cln.GetAsync("UserRegistrationAPI/" + Uid);
-            getflight.Wait();
-
-            var res = getflight.Result;
-            if (res.IsSuccessStatusCode)
+            var getusrID = cln.GetAsync("UserRegistrationAPI/" + Uid);
+            getusrID.Wait();
+            var result = getusrID.Result;
+            if (result.IsSuccessStatusCode)
             {
-                var dat = res.Content.ReadAsAsync<UserRegistration>();
-                dat.Wait();
-                flight = dat.Result;
+                var data = result.Content.ReadAsAsync<UserRegistration>();
+                data.Wait();
+                usr = data.Result;
+
             }
-            return View(flight);
+            return View(usr);
         }
         public IActionResult insertuser()
         {
@@ -78,11 +79,11 @@ namespace ApartmentManagementSystem.Controllers.AMS_UI_Controllers
             var res = post.Result;
             if (res.IsSuccessStatusCode)
             {
-                return RedirectToAction("showuserdetails", "UserRegistrationUI");
+                return RedirectToAction("LoginPageForCustomer", "Home");
             }
             return View(userdet);
         }
-
+        
 
         [HttpGet]
         public IActionResult EditUser(string Uid)

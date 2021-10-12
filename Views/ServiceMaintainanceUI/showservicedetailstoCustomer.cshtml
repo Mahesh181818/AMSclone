@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AMS_Models.Models.ServiceMaintanence>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContacNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContacNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+          @*  <td>
+                @Html.DisplayFor(modelItem => item.Property.Pid)
+            </td>*@
+            <td>
+               @* <a asp-action="Edit" asp-route-id="@item.Srno">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Srno">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Srno">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -6,12 +6,18 @@
 
 <h1>showuserdetails</h1>
 
-<p>
+@*<p>
     <a asp-action="insertuser">Create New</a>
-</p>
+</p>*@
+
+
+
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Uid)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
@@ -21,15 +27,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>*@
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uid)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
@@ -39,13 +48,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>*@
             <td>
                 <a asp-action="EditUser" asp-route-Uid="@item.Uid">Edit</a> |
                 <a asp-action="UserDetails" asp-route-Uid="@item.Uid">Details</a> |
-                <a asp-action="Delete" asp-route-Uid="@item.Uid">Delete</a>
+                @* <a asp-action="Delete" asp-route-Uid="@item.Uid">Delete</a>*@
             </td>
         </tr>
 }

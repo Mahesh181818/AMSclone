@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\.vs\VSWorkspaceState.json" />
+    <Content Include="wwwroot\EstateAgency\.vs\VSWorkspaceState.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\.vs\slnx.sqlite" />
+    <None Include="wwwroot\EstateAgency\.vs\slnx.sqlite" />
+    <None Include="wwwroot\forms\contact.php" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
@@ -24,6 +35,11 @@
     <ProjectReference Include="..\AMS_BAL\AMS_BAL.csproj" />
     <ProjectReference Include="..\AMS_Models\AMS_Models.csproj" />
     <ProjectReference Include="..\AMS_Repository\AMS_Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\.vs\EstateAgency\v16\" />
+    <Folder Include="wwwroot\EstateAgency\.vs\EstateAgency\v16\" />
   </ItemGroup>
 
 </Project>
